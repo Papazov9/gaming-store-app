@@ -1,0 +1,22 @@
+.bg-wallpaper {
+  background-image: url('/assets/wallpaper.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 84%;
+}
+.text-overlay {
+  /* Semi-transparent black background */
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+  
+  /* Padding around the text */
+  padding: 20px;
+
+  /* Other styling for positioning and appearance */
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white; /* White text color for better contrast */
+  text-align: center;
+  border-radius: 10px; /* Optional: for rounded corners */
+}
