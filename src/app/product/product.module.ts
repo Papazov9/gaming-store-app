@@ -7,6 +7,7 @@ import { ProductRoutingModule } from './product-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AddNewProductComponent } from './add-new-product/add-new-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 
 
@@ -14,7 +15,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     ProductListComponent,
     ProductItemComponent,
-    AddNewProductComponent
+    AddNewProductComponent,
+    ProductDetailsComponent
   ],
   imports: [
     CommonModule,

@@ -1,14 +1,13 @@
 <div class="bg-wallpaper">
   <div class="text-overlay">
     <div
-      class="container text-center text-white d-flex flex-column justify-content-center align-items-center h-100">
-      
-      <div *ngIf="authService.isAuthenticated$ | async">
+      class="container text-center text-white h-50">
+      <div *ngIf="isAuthenticated">
         <h1>Welcome, {{username}}!</h1>
         <p>Your one-stop shop for all gaming needs.</p>
         <a class="btn btn-primary btn-lg" routerLink="/products">Shop Now</a>
       </div>
-      <div *ngIf="!(authService.isAuthenticated$ | async)">
+      <div *ngIf="!isAuthenticated">
         <h1>Welcome, Unknown Gamer!</h1>
         <p>Your one-stop shop for all gaming needs. But first you have to login/register!</p>
         <a class="btn btn-primary btn-lg m-3" routerLink="/register">Register</a>

@@ -1,0 +1,43 @@
+<section class="py-5">
+  <div class="container px-4 px-lg-5 my-5">
+    <div class="row gx-4 gx-lg-5 align-items-center">
+      <div class="col-md-6">
+        <img
+          class="card-img-top mb-5 mb-md-0"
+          [src]="product?.imageUrl"
+          alt="..."
+        />
+      </div>
+      <div class="col-md-6">
+        <h1 class="display-5 fw-bolder">{{ product?.name }}</h1>
+        <div class="fs-5 mb-5" *ngIf="product?.isOnSale">
+          <span class="text-decoration-line-through">{{ oldPrice }}</span>
+          <span>{{ price }}</span>
+        </div>
+        <div class="fs-5 mb-5" *ngIf="!product?.isOnSale">
+          <span>{{ price }}</span>
+        </div>
+        <p class="lead">{{ product?.description }}</p>
+        <div class="d-flex">
+          <button class="btn btn-outline-dark flex-shrink-0" type="button">
+            <i class="bi-cart-fill me-1"></i>
+            Add to cart
+          </button>
+          <div *ngIf="isAdmin">
+            <button
+              class="btn flex-shrink-0 bg-danger text-white"
+              type="button">
+              <i class="bi bi-trash"></i>
+            </button>
+            <button
+              class="btn flex-shrink-0 bg-warning text-white"
+              type="button">
+              <i class="bi bi-pencil"></i>
+            </button>
+          </div>
+        </div>
+        <div class="d-flex py-4"></div>
+      </div>
+    </div>
+  </div>
+</section>

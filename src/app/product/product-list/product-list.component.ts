@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
-import { Product } from '../products';
+import { ProductView } from '../products';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -12,13 +12,13 @@ export class ProductListComponent implements OnInit, OnDestroy{
 
 
   subscription?: Subscription;
-  products: Product[] = [];
+  products: ProductView[] = [];
 
   constructor(private productService: ProductService){}
 
   ngOnInit(): void {
     this.subscription = this.productService.getAllProducts()
-    .subscribe((products: Product[]) => this.products = products);
+    .subscribe((products: ProductView[]) => this.products = products);
     console.log(this.products);
     
   }

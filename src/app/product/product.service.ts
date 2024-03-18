@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Product } from './products';
+import { Product, ProductView } from './products';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -12,17 +12,16 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-  getAllProducts(): Observable<Product[]> {
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${localStorage.getItem('token')}` 
-    });
-    return this.http.get<Product[]>(`${this.URL}/all`, {headers});
+  getAllProducts(): Observable<ProductView[]> {
+    return this.http.get<ProductView[]>(`${this.URL}/all`);
   }
 
   addProduct(formData: Product): Observable<Product> {
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${localStorage.getItem('token')}` 
-    });
-    return this.http.post<Product>(`${this.URL}/addProduct`, formData, {headers});
+
+    return this.http.post<Product>(`${this.URL}/addProduct`, formData);
+  }
+
+  findProductById(productId: string): Observable<ProductView> {
+    return this.http.get<ProductView>(`${this.URL}/details/${productId}`);
   }
 }

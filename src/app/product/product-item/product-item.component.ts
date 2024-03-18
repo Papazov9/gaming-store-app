@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Product } from '../products';
+import { Product, ProductView } from '../products';
 
 @Component({
   selector: 'app-product-item',
@@ -8,7 +8,7 @@ import { Product } from '../products';
 })
 export class ProductItemComponent implements OnInit{
 
-  @Input() product!: Product;
+  @Input() product!: ProductView;
   src!: string;
   oldPrice?: number;
   price!: number;
@@ -19,8 +19,8 @@ export class ProductItemComponent implements OnInit{
   ngOnInit(): void {
     if (this.product.imageUrl.startsWith('data:image')) {
       this.src = this.product.imageUrl;
-    }else
-    {
+    }
+    else {
       this.src = `data:image/jpg;base64, ${this.product.imageUrl}`;
     }
     if (this.product.isOnSale) {

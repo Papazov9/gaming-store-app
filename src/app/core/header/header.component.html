@@ -1,11 +1,11 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+<nav class="navbar navbar-static-top navbar-expand-lg navbar-light bg-light">
   <div class="container px-4 px-lg-5">
       <a class="navbar-brand" routerLink="/home">GameGlitch</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-      <div class="collapse navbar-collapse bg-light" id="navbarSupportedContent">
+      <button class="navbar-toggler collapsed text-uppercase font-weight-bold bg-light text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse bg-light rounded" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4" *ngIf="!isLogged">
         </ul>
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4" *ngIf="isLogged">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4 px-4" *ngIf="isLogged">
               <li class="nav-item"><a class="nav-link" aria-current="page" routerLink="/home">Home</a></li>
               <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
               <li class="nav-item dropdown">
@@ -22,15 +22,16 @@
               <li class="nav-item"><a class="nav-link" aria-current="page" routerLink="/register">Register</a></li>
               <li class="nav-item"><a class="nav-link" aria-current="page" routerLink="/login">Login</a></li>
           </ul>
-          <div class="navbar-nav px-4" *ngIf="isLogged">
+          <div class="navbar-nav py-2 px-4" *ngIf="isLogged">
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-circle"></i></a>
+              <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-circle custom-icon"></i></a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" routerLink="/profile">My Profile</a></li>
+                  <li><hr class="dropdown-divider" /></li>
                   <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
               </ul>
           </li>
-          <form class="d-flex">
+          <form class="d-flex py-2">
               <button class="btn btn-outline-dark" type="submit">
                   <i class="bi-cart-fill me-1"></i>
                   Cart
