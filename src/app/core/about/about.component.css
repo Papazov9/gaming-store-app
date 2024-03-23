@@ -1,0 +1,20 @@
+body {
+  background-color: #000000;
+  color: #000000;
+}
+.shadow-section {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #ffffff;
+}
+h2, h3 {
+  color: #00008B;
+}
+.section-heading {
+  background-color: #00008B;
+  color: #ffffff;
+  padding: 10px;
+  margin-top: 20px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}

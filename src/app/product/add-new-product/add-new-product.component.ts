@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductService } from '../product.service';
 import { ToastrService } from 'ngx-toastr';
-import { catchError, of, tap } from 'rxjs';
+import { Subscription, catchError, of, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { Product } from '../products';
 
@@ -11,13 +11,15 @@ import { Product } from '../products';
   templateUrl: './add-new-product.component.html',
   styleUrls: ['./add-new-product.component.css']
 })
-export class AddNewProductComponent implements OnInit{
+export class AddNewProductComponent implements OnInit, OnDestroy{
 
   addProductForm!: FormGroup;
   file?: File | null;
   encodedFileString!: string;
+  addProbSub$?: Subscription;
 
   constructor(private formBuilder: FormBuilder, private productService: ProductService, private toastrService: ToastrService, private router: Router) {}
+  
 
   ngOnInit(): void {
     this.addProductForm = this.formBuilder.group({
@@ -29,7 +31,6 @@ export class AddNewProductComponent implements OnInit{
   }
 
   addProduct() {
-    const formData: FormData = new FormData();
     const product: Product = {
       ...this.addProductForm.value,
     }
@@ -39,7 +40,6 @@ export class AddNewProductComponent implements OnInit{
     .pipe(
       tap((response) => {
         this.toastrService.success("Product added successfully!", "Success");
-        console.log(response);
         this.router.navigate(['/products']);
       }),
       catchError((error) => {
@@ -52,18 +52,23 @@ export class AddNewProductComponent implements OnInit{
   }
 
   onFileInput(event: Event) {
-   const target = event.currentTarget as HTMLInputElement;
-   let fileList: FileList | null = target.files;
-   if (fileList) {
-    this.file = fileList.item(0);
-    if (this.file) {
-      const reader = new FileReader();
-      reader.readAsDataURL(this.file);
-      reader.onload = () => {
-      this.encodedFileString = reader.result as string;
-      }
+    const target = event.currentTarget as HTMLInputElement;
+    let fileList: FileList | null = target.files;
+    if (fileList) {
+     this.file = fileList.item(0);
+     if (this.file) {
+       const reader = new FileReader();
+       reader.readAsDataURL(this.file);
+       reader.onload = () => {
+       this.encodedFileString = reader.result as string;
+       }
+     }
     }
    }
-  }
 
+   ngOnDestroy(): void {
+    if (this.addProbSub$) {
+      this.addProbSub$.unsubscribe();
+    }
+  }
 }

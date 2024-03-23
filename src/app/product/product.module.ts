@@ -8,6 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AddNewProductComponent } from './add-new-product/add-new-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProductEditComponent } from './product-edit/product-edit.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 
 
@@ -16,14 +18,16 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     ProductListComponent,
     ProductItemComponent,
     AddNewProductComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    ProductEditComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     HttpClientModule,
     ReactiveFormsModule,
-    ProductRoutingModule
+    ProductRoutingModule,
+    SweetAlert2Module.forRoot()
   ],
   exports: [
     ProductListComponent,

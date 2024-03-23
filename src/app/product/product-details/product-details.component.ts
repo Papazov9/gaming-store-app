@@ -5,6 +5,7 @@ import { ProductService } from '../product.service';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/user/auth.service';
 import { Subscription } from 'rxjs';
+import Swal  from 'sweetalert2';
 
 @Component({
   selector: 'app-product-details',
@@ -33,8 +34,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy{
       this.productService.findProductById(productId).subscribe({
         next: (product) => {
           this.product = product;
-          this.prepareProduct.bind(this);
-          this.toastrService.success("Details successfully loaded!", "Success");
+          this.prepareProduct();
         },
         error: (error) => {
           this.router.navigate(['products']);
@@ -53,6 +53,39 @@ export class ProductDetailsComponent implements OnInit, OnDestroy{
     {
       this.price = this.product?.price;
     }
+  }
+
+  confirmDelete(): void {
+    Swal.fire({
+      title: 'Delete Dialog',
+      text: 'Are you sure you want to delete product with name: ' + this.product?.name,
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: 'red',
+      reverseButtons: true
+    }).then((res) => {
+      if (res.isConfirmed) {
+        this.deleteProduct();
+      }
+    })
+  }
+
+  deleteProduct(): void {
+    if (!this.product?.id) {
+      this.toastrService.error('Invalid product or product id!', 'Error');
+      return;
+    }
+    this.productService.deleteProduct(this.product?.id).subscribe({
+      next: () => {
+        this.toastrService.success("Products is deleted successfully!", "Success");
+        this.router.navigate(['products']);
+      },
+
+      error: (error) => {
+        this.toastrService.error("Unable to delete this product!", "Error");
+        this.router.navigate(['products']);
+      }
+    })
   }
 
   ngOnDestroy(): void {

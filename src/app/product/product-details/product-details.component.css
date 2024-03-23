@@ -1,0 +1,14 @@
+.product-image {
+  max-width: 100%;
+  height: auto;
+}
+.product-name {
+  margin-bottom: 15px;
+}
+.product-description {
+  margin-bottom: 15px;
+}
+
+.bold {
+ font-style: oblique;
+}
