@@ -19,28 +19,37 @@ password:123456
 
 ## Screenshots:
 Guest view of the home page:
-![alt text](/imagesRead/home-guest.png)
+
+![alt text](./imagesRead/home-guest.png)
 
 Authenticated user home view:
+
 ![alt text](/imagesRead/home-auth.png)
 
 All products view:
+
 ![alt text](/imagesRead/all-products.png)
 
 Detail view of a product:
+
 ![alt text](/imagesRead/detailed.png)
 
 Add new product view:
+
 ![alt text](/imagesRead/add-product.png)
 
 Edit product view: 
+
 ![alt text](/imagesRead/edit-product.png)
 
 Confirmation dialog for edit and delete:
+
 ![alt text](/imagesRead/confirmDialog.png)
 
 Alerts bar for successful request:
+
 ![alt text](/imagesRead/success.png)
 
 Alert bar for failed request:
+
 ![alt text](/imagesRead/failed.png)
