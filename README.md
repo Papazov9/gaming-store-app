@@ -7,7 +7,7 @@ This is a web application for buying all tech one gamer needs.
 repo: https://github.com/Papazov9/GamingStore-Project-Server/tree/main/gaming-store/gamimg-store. 
 2. Then run the server as a normal Spring Boot Server. NOTE: in application.properties file located in the server you have to provide appropriate credentials for the database.
 3. Then download the front-end nad in the root folder run nmp i to download node_modules. 
-4. After it execute ng serve again in the root folder of the front-end application and navigate to http://localhost:4200/. The application reloads automatically when soe changes are made. 
+4. After it execute ng serve again in the root folder of the front-end application and navigate to http://localhost:4200/. The application reloads automatically when some changes are made. 
 
 ## Useful information
 Application is jwt-based and on first start of the spring server ADMIN USER will be created.
