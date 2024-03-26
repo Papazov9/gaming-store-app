@@ -1,27 +1,46 @@
-# GamingStoreApp
+# GameGlitch E-Commerce Gaming Web App
+This is a web application for buying all tech one gamer needs.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.12.
+## Steps for running the application
 
-## Development server
+1. This is the front end of the application. So first you need to start the Spring Boot server which is located in this 
+repo: https://github.com/Papazov9/GamingStore-Project-Server/tree/main/gaming-store/gamimg-store. 
+2. Then run the server as a normal Spring Boot Server. NOTE: in application.properties file located in the server you have to provide appropriate credentials for the database.
+3. Then download the front-end nad in the root folder run nmp i to download node_modules. 
+4. After it execute ng serve again in the root folder of the front-end application and navigate to http://localhost:4200/. The application reloads automatically when soe changes are made. 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Useful information
+Application is jwt-based and on first start of the spring server ADMIN USER will be created.
 
-## Code scaffolding
+## Admin user credentials for admin use
+Admin user:
+username: admin
+password:123456
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Screenshots:
+Guest view of the home page:
+![alt text](/imagesRead/home-guest.png)
 
-## Build
+Authenticated user home view:
+![alt text](/imagesRead/home-auth.png)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+All products view:
+![alt text](/imagesRead/all-products.png)
 
-## Running unit tests
+Detail view of a product:
+![alt text](/imagesRead/detailed.png)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Add new product view:
+![alt text](/imagesRead/add-product.png)
 
-## Running end-to-end tests
+Edit product view: 
+![alt text](/imagesRead/edit-product.png)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Confirmation dialog for edit and delete:
+![alt text](/imagesRead/confirmDialog.png)
 
-## Further help
+Alerts bar for successful request:
+![alt text](/imagesRead/success.png)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Alert bar for failed request:
+![alt text](/imagesRead/failed.png)
