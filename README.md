@@ -14,7 +14,9 @@ Application is jwt-based and on first start of the spring server ADMIN USER will
 
 ## Admin user credentials for admin use
 Admin user:
+
 username: admin
+
 password:123456
 
 ## Screenshots:
