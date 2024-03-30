@@ -12,11 +12,12 @@ import { ProductModule } from './product/product.module';
 import { ToastrModule } from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { RequestInterceptor } from './guards/request-interceptor';
+import { CartComponent } from './core/cart/cart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ErrorComponent
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,

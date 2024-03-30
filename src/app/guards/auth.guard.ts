@@ -27,7 +27,6 @@ export const loggedInGuard: CanActivateFn = (route, state) => {
   next: (isLogged) => {
       isAuthenticated = isLogged;
   },
-
   error: (error) => {
     inject(ToastrService).error("Unable to determine is user is authenticated!", "Error");
   }

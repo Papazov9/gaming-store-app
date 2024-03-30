@@ -5,6 +5,7 @@ import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { CoreRoutingModule } from './core-routing.module';
+import { CartComponent } from './cart/cart.component';
 
 
 
@@ -12,7 +13,8 @@ import { CoreRoutingModule } from './core-routing.module';
   declarations: [
     HeaderComponent,
     FooterComponent,
-    AboutComponent
+    AboutComponent,
+    CartComponent
   ],
   imports: [
     CommonModule,

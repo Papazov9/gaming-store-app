@@ -6,6 +6,8 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/user/auth.service';
 import { Subscription } from 'rxjs';
 import Swal  from 'sweetalert2';
+import { CartService } from 'src/app/core/cart/cart.service';
+import { User } from 'src/app/user/Types';
 
 @Component({
   selector: 'app-product-details',
@@ -18,6 +20,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy{
   oldPrice?: number;
   price?: number;
   isAdmin?: boolean;
+  user: User | null = null;
   adminSub?: Subscription;
 
   constructor(
@@ -25,7 +28,8 @@ export class ProductDetailsComponent implements OnInit, OnDestroy{
     private router: Router, 
     private productService: ProductService, 
     private toastrService: ToastrService,
-    private authService: AuthService
+    private authService: AuthService,
+    private cartService: CartService
     ) {}
 
   ngOnInit(): void {
@@ -43,7 +47,9 @@ export class ProductDetailsComponent implements OnInit, OnDestroy{
       });
     });
 
-    this.authService.currentUser$.subscribe( user => this.isAdmin = user?.roles.includes('ADMIN'));
+    this.authService.currentUser$.subscribe( (userParam) => {
+      this.user = userParam
+      this.isAdmin = userParam?.roles.includes('ADMIN')});
   }
   private prepareProduct() {
     if (this.product?.isOnSale) {
@@ -86,6 +92,23 @@ export class ProductDetailsComponent implements OnInit, OnDestroy{
         this.router.navigate(['products']);
       }
     })
+  }
+
+  addToCart(): void {
+    if (this.user && this.product) {
+      this.cartService.addToCart(this.user, this.product?.id).subscribe({
+        next: (productResponse) => {
+          this.toastrService.success(`Product: ${productResponse.name} successfully added!`, "Success");
+          this.cartService.incrementCartCount();
+        },
+
+        error: (err) => {
+          this.toastrService.error(`Unable to add this product to your cart!\n ${err.error.message}`, "Error");
+        }
+      });
+    } else {
+      this.toastrService.error("Unable to add this product to cart!", "Error")
+    }
   }
 
   ngOnDestroy(): void {

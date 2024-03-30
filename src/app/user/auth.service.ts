@@ -11,8 +11,8 @@ export class AuthService {
   private URL = 'http://localhost:8080/api/v1/auth';
   private tokenParam: string | undefined;
   private TOKEN_KEY: string = 'token';
-  private isAuthenticated = new BehaviorSubject<boolean>(false);
-  private currentUser = new BehaviorSubject<User | null>(null);
+  private isAuthenticated$$ = new BehaviorSubject<boolean>(false);
+  private currentUser$$ = new BehaviorSubject<User | null>(null);
 
   constructor(private http: HttpClient, private router: Router) {
     this.checkToken();
@@ -49,23 +49,23 @@ export class AuthService {
         token: this.tokenParam,
         roles: jwt.roles.split(', '),
       };
-      this.currentUser.next(user);
-      this.isAuthenticated.next(true);
+      this.currentUser$$.next(user);
+      this.isAuthenticated$$.next(true);
     }
   }
 
   logout(): void {
     localStorage.removeItem(this.TOKEN_KEY);
-    this.isAuthenticated.next(false);
-    this.currentUser.next(null);
+    this.isAuthenticated$$.next(false);
+    this.currentUser$$.next(null);
     this.router.navigate(['']);
   }
 
   get isAuthenticated$(): Observable<boolean> {
-    return this.isAuthenticated.asObservable();
+    return this.isAuthenticated$$.asObservable();
   }
 
   get currentUser$(): Observable<User | null> {
-    return this.currentUser.asObservable();
+    return this.currentUser$$.asObservable();
   }
 }
