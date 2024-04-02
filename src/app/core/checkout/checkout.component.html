@@ -1,0 +1,137 @@
+<div class="container">
+  <h1 class="title">Checkout</h1>
+  <div class="row">
+      <div class="col-xl-8" *ngIf="cartProducts$ | async as products; else loading">
+          <div class="card border shadow-none" *ngFor="let product of products">
+              <div class="card-body">
+
+                  <div class="d-flex align-items-start border-bottom pb-3">
+                      <div class="me-4">
+                          <img [src]="product.imageUrl" alt="Product Image" class="avatar-lg rounded">
+                      </div>
+                      <div class="flex-grow-1 align-self-center overflow-hidden">
+                          <div>
+                              <h5 class="text-truncate font-size-18"><a href="#" class="text-dark">{{product.name}}</a></h5>
+                              <p class="text-muted mb-0">
+                                  <i class="bx bxs-star text-warning"></i>
+                                  <i class="bx bxs-star text-warning"></i>
+                                  <i class="bx bxs-star text-warning"></i>
+                                  <i class="bx bxs-star text-warning"></i>
+                                  <i class="bx bxs-star-half text-warning"></i>
+                              </p>
+                          </div>
+                      </div>
+                      <div class="flex-shrink-0 ms-2">
+                          <ul class="list-inline mb-0 font-size-16">
+                              <li class="list-inline-item">
+                                  <a href="#" class="text-muted px-1">
+                                      <i class="mdi mdi-trash-can-outline"></i>
+                                  </a>
+                              </li>
+                              <li class="list-inline-item">
+                                  <a href="#" class="text-muted px-1">
+                                      <i class="mdi mdi-heart-outline"></i>
+                                  </a>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+
+                  <div>
+                      <div class="row">
+                          <div class="col-md-12" *ngIf="product.isOnSale">
+                              <div class="mt-3">
+                                  <p class="text-muted mb-2">Price</p>
+                                  <h5 class="mb-0 mt-2"><span class="text-muted me-2"><del class="font-size-16 fw-normal">{{product.price | number: '1.2-2'}}$</del></span>{{product.price * 0.8 | number: '1.2-2'}}$</h5>
+                              </div>
+                          </div>
+                          <div class="col-md-12" *ngIf="!product.isOnSale">
+                            <div class="mt-3">
+                                <p class="text-muted mb-2">Price</p>
+                                <h5 class="mb-0 mt-2">{{product.price | number: '1.2-2'}}$</h5>
+                            </div>
+                        </div>
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+
+          <div class="row my-4">
+              <div class="col-sm-6">
+                  <a routerLink="/products" class="btn btn-link text-muted">
+                      <i class="mdi mdi-arrow-left me-1"></i> Continue Shopping </a>
+              </div>
+              <div class="col-sm-6">
+                  <div class="text-sm-end mt-2 mt-sm-0">
+                      <a class="btn btn-success" (click)="checkout()">
+                          <i class="mdi mdi-cart-outline me-1"></i> Checkout </a>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-xl-4">
+        <div class="mt-5 mt-lg-0">
+            <div class="card border shadow-none">
+                <div class="card-header bg-transparent border-bottom py-3 px-4">
+                    <h5 class="font-size-16 mb-0 text-center">Order Summary <span class="float-end"></span></h5>
+                </div>
+                <div class="card-body p-4 pt-2">
+
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <tbody>
+                                <tr>
+                                    <td>Username :</td>
+                                    <td class="text-end">{{currentUser}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Discount : </td>
+                                    <td class="text-end">- {{order?.discount | number: '1.2-2'}}$</td>
+                                </tr>
+                                <tr>
+                                    <td>Shipping Charge :</td>
+                                    <td class="text-end">{{order?.shipping | number: '1.2-2'}}$</td>
+                                </tr>
+                                <tr>
+                                    <td>VAT : </td>
+                                    <td class="text-end">{{order?.VAT | number: '1.2-2'}}%</td>
+                                </tr>
+                                <tr class="bg-light">
+                                    <th>Total :</th>
+                                    <td class="text-end">
+                                        <span class="fw-bold">
+                                            {{order?.total | number: '1.2-2'}}$
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- end table-responsive -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  </div>
+
+
+<ng-template #loading>
+  <div class="spinner-container">
+  <div class="lds-spinner">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+  </ng-template>

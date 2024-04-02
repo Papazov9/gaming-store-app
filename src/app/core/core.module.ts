@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { CoreRoutingModule } from './core-routing.module';
 import { CartComponent } from './cart/cart.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 
 
@@ -14,7 +15,8 @@ import { CartComponent } from './cart/cart.component';
     HeaderComponent,
     FooterComponent,
     AboutComponent,
-    CartComponent
+    CartComponent,
+    CheckoutComponent
   ],
   imports: [
     CommonModule,

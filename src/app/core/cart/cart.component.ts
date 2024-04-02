@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CartService } from './cart.service';
 import { AuthService } from 'src/app/user/auth.service';
 import { ToastrService } from 'ngx-toastr';
-import { EMPTY, of, switchMap } from 'rxjs';
+import { EMPTY, Observable, of, switchMap } from 'rxjs';
 import { User } from 'src/app/user/Types';
 
 @Component({
@@ -10,8 +10,9 @@ import { User } from 'src/app/user/Types';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit{
+export class CartComponent implements OnInit {
   currentUser: string = '';
+  cartCounter$: Observable<number> | undefined;
 
   constructor(public cartService: CartService, private authService: AuthService, private toastrService: ToastrService) {}
 
@@ -25,7 +26,6 @@ export class CartComponent implements OnInit{
       })
     ).subscribe({
       next: (user) => {
-        console.log(user);
         return this.currentUser = user?.username || '';
       },
 
@@ -36,6 +36,7 @@ export class CartComponent implements OnInit{
     });
 
     this.loadUserCartProducts();
+    this.cartCounter$ = this.cartService.cartCounter$;
   }
 
   loadUserCartProducts() {

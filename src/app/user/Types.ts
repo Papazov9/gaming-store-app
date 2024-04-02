@@ -15,6 +15,11 @@ export interface UserDTO {
   lastName: string
 }
 
+export interface UserDetailed extends UserDTO {
+  createdAt: string,
+  modifiedAt: string
+}
+
 export interface JWTDto {
   iss: string,
   sub: string,

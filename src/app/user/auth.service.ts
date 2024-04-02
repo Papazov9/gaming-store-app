@@ -1,7 +1,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { JWTDto, User, UserDTO } from './Types';
+import { JWTDto, User, UserDTO, UserDetailed } from './Types';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, of, tap } from 'rxjs';
+import { BehaviorSubject, EMPTY, Observable, of, tap } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Injectable({
