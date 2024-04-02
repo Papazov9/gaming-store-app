@@ -26,32 +26,44 @@ Guest view of the home page:
 
 Authenticated user home view:
 
-![alt text](/imagesRead/home-auth.png)
+![alt text](./imagesRead/home-auth.png)
 
 All products view:
 
-![alt text](/imagesRead/all-products.png)
+![alt text](./imagesRead/all-products.png)
 
 Detail view of a product:
 
-![alt text](/imagesRead/detailed.png)
+![alt text](./imagesRead/detailed.png)
 
 Add new product view:
 
-![alt text](/imagesRead/add-product.png)
+![alt text](./imagesRead/add-product.png)
 
 Edit product view: 
 
-![alt text](/imagesRead/edit-product.png)
+![alt text](./imagesRead/edit-product.png)
 
 Confirmation dialog for edit and delete:
 
-![alt text](/imagesRead/confirmDialog.png)
+![alt text](./imagesRead/confirmDialog.png)
+
+Profile page:
+
+![alt text](./imagesRead/profilePage.png)
+
+Checkout page with spinner while loading products for checkout:
+
+![alt text](./imagesRead/checkoutLoading.png)
+
+Checkout page: 
+
+![alt text](./imagesRead/checkoutPage.png)
 
 Alerts bar for successful request:
 
-![alt text](/imagesRead/success.png)
+![alt text](./imagesRead/success.png)
 
 Alert bar for failed request:
 
-![alt text](/imagesRead/failed.png)
+![alt text](./imagesRead/failed.png)

@@ -53,7 +53,8 @@ export class CheckoutComponent implements OnInit, OnDestroy{
       discount: totalDiscount,
       total: totalPrice + totalShipping,
       shipping: totalShipping,
-      VAT: VAT
+      VAT: VAT,
+      productsCount: products.length
     }
   }
 

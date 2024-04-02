@@ -1,7 +1,7 @@
 <div class="container">
   <h1 class="title">Checkout</h1>
-  <div class="row">
-      <div class="col-xl-8" *ngIf="cartProducts$ | async as products; else loading">
+  <div class="row" *ngIf="cartProducts$ | async as products; else loading">
+      <div class="col-xl-8" >
           <div class="card border shadow-none" *ngFor="let product of products">
               <div class="card-body">
 
@@ -74,7 +74,7 @@
         <div class="mt-5 mt-lg-0">
             <div class="card border shadow-none">
                 <div class="card-header bg-transparent border-bottom py-3 px-4">
-                    <h5 class="font-size-16 mb-0 text-center">Order Summary <span class="float-end"></span></h5>
+                    <h5 class="font-size-16 mb-0">Order Summary <span class="float-end text-muted"> Username: {{currentUser}}</span></h5>
                 </div>
                 <div class="card-body p-4 pt-2">
 
@@ -82,8 +82,8 @@
                         <table class="table mb-0">
                             <tbody>
                                 <tr>
-                                    <td>Username :</td>
-                                    <td class="text-end">{{currentUser}}</td>
+                                    <td>Products count :</td>
+                                    <td class="text-end">{{order?.productsCount}}</td>
                                 </tr>
                                 <tr>
                                     <td>Discount : </td>
